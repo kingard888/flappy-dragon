@@ -1,0 +1,505 @@
+.dragon {
+  position: relative;
+  width: 170px;
+  height: 120px;
+  transform-origin: center;
+  image-rendering: pixelated;
+}
+
+.dragon-shadow {
+  position: absolute;
+  width: 90px;
+  height: 13px;
+  left: 47px;
+  top: 103px;
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 50%;
+  filter: blur(4px);
+  z-index: 0;
+}
+
+.dragon-body {
+  position: absolute;
+  width: 92px;
+  height: 53px;
+  left: 47px;
+  top: 42px;
+  border-radius: 55% 45% 48% 52%;
+  background:
+    linear-gradient(
+      145deg,
+      #ef3b43 0%,
+      #bd1721 42%,
+      #751019 100%
+    );
+  border: 4px solid #35070b;
+  z-index: 5;
+  box-shadow:
+    inset -8px -7px 0 rgba(52, 4, 8, 0.25),
+    inset 8px 5px 0 rgba(255, 94, 94, 0.18);
+}
+
+.dragon-belly {
+  position: absolute;
+  width: 56px;
+  height: 39px;
+  left: 14px;
+  top: 7px;
+  border-radius: 50%;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #f2a72d 0 7px,
+      #d77a1c 7px 10px
+    );
+  transform: rotate(-7deg);
+  border: 2px solid #6f300b;
+}
+
+.dragon-spikes {
+  position: absolute;
+  left: 20px;
+  top: -17px;
+  display: flex;
+  gap: 6px;
+  z-index: -1;
+}
+
+.dragon-spikes i {
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 19px solid #7c1118;
+  transform: rotate(-8deg);
+  filter: drop-shadow(2px 2px 0 #31070b);
+}
+
+.dragon-neck {
+  position: absolute;
+  width: 39px;
+  height: 65px;
+  left: 105px;
+  top: 22px;
+  border-radius: 50%;
+  background:
+    linear-gradient(
+      90deg,
+      #741018,
+      #d3212c,
+      #8b1119
+    );
+  border: 4px solid #35070b;
+  transform: rotate(18deg);
+  z-index: 7;
+}
+
+.neck-spikes {
+  position: absolute;
+  left: 3px;
+  top: -17px;
+  display: flex;
+  gap: 3px;
+  transform: rotate(-10deg);
+}
+
+.neck-spikes i {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 17px solid #781018;
+  filter: drop-shadow(2px 2px 0 #31070b);
+}
+
+.dragon-head {
+  position: absolute;
+  width: 48px;
+  height: 43px;
+  left: 122px;
+  top: 8px;
+  border-radius: 50% 58% 45% 45%;
+  background:
+    linear-gradient(
+      145deg,
+      #f03b42,
+      #b91722 55%,
+      #681018
+    );
+  border: 4px solid #35070b;
+  transform: rotate(7deg);
+  z-index: 10;
+  box-shadow:
+    inset -5px -5px 0 rgba(60, 0, 5, 0.22);
+}
+
+.horn {
+  position: absolute;
+  width: 13px;
+  height: 28px;
+  background:
+    linear-gradient(
+      90deg,
+      #5c361d,
+      #d39a52,
+      #6d401f
+    );
+  border: 3px solid #351c10;
+  border-radius: 80% 30% 70% 30%;
+  top: -22px;
+  transform: rotate(-22deg);
+}
+
+.horn-left {
+  left: 5px;
+}
+
+.horn-right {
+  right: 3px;
+  transform: rotate(25deg);
+}
+
+.ear {
+  position: absolute;
+  width: 20px;
+  height: 15px;
+  background: #a9141d;
+  border: 3px solid #35070b;
+  top: 1px;
+}
+
+.ear-left {
+  left: -13px;
+  transform: rotate(-28deg) skewX(-20deg);
+}
+
+.ear-right {
+  right: -12px;
+  transform: rotate(28deg) skewX(20deg);
+}
+
+.dragon-eye {
+  position: absolute;
+  width: 10px;
+  height: 13px;
+  background: #ffe55b;
+  border: 2px solid #291005;
+  border-radius: 50%;
+  top: 14px;
+  box-shadow: 0 0 6px #ffcc33;
+}
+
+.dragon-eye::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 9px;
+  background: #210b05;
+  left: 2px;
+  top: 0;
+}
+
+.dragon-eye-left {
+  left: 7px;
+}
+
+.dragon-eye-right {
+  display: none;
+}
+
+.dragon-snout {
+  position: absolute;
+  width: 29px;
+  height: 20px;
+  right: -17px;
+  top: 22px;
+  border-radius: 40% 65% 50% 30%;
+  background:
+    linear-gradient(
+      135deg,
+      #d92b35,
+      #851018
+    );
+  border: 3px solid #35070b;
+}
+
+.dragon-nostril {
+  position: absolute;
+  width: 5px;
+  height: 3px;
+  background: #31070b;
+  border-radius: 50%;
+  top: 29px;
+  z-index: 15;
+}
+
+.nostril-left {
+  right: 2px;
+}
+
+.nostril-right {
+  right: -4px;
+}
+
+.dragon-fang {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 11px solid #fff3ce;
+  top: 39px;
+  z-index: 20;
+}
+
+.fang-left {
+  right: 4px;
+}
+
+.fang-right {
+  right: 13px;
+}
+
+.dragon-wing {
+  position: absolute;
+  width: 105px;
+  height: 85px;
+  transform-origin: 88% 90%;
+  z-index: 2;
+}
+
+.dragon-wing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(
+    100% 100%,
+    79% 65%,
+    78% 12%,
+    60% 55%,
+    50% 4%,
+    39% 55%,
+    22% 17%,
+    28% 70%,
+    0% 47%,
+    18% 100%
+  );
+  background:
+    linear-gradient(
+      135deg,
+      #d62935,
+      #8b1018 65%,
+      #4b080e
+    );
+  border-radius: 10px;
+}
+
+.wing-bone {
+  position: absolute;
+  width: 76px;
+  height: 4px;
+  left: 22px;
+  top: 55px;
+  background: #4d080e;
+  transform: rotate(-31deg);
+  z-index: 2;
+}
+
+.wing-bone-2 {
+  transform: rotate(-56deg);
+  width: 61px;
+  top: 39px;
+  left: 33px;
+}
+
+.wing-bone-3 {
+  transform: rotate(-73deg);
+  width: 48px;
+  top: 27px;
+  left: 43px;
+}
+
+.dragon-wing-back {
+  left: 15px;
+  top: 3px;
+  transform: rotate(-17deg) scale(0.9);
+  z-index: 1;
+}
+
+.dragon-wing-front {
+  left: 29px;
+  top: 10px;
+  transform: rotate(-8deg);
+  z-index: 6;
+}
+
+.dragon.flying .dragon-wing-back {
+  animation: flap-back 0.24s ease-in-out infinite alternate;
+}
+
+.dragon.flying .dragon-wing-front {
+  animation: flap-front 0.24s ease-in-out infinite alternate;
+}
+
+.dragon.flying {
+  animation: dragon-float 0.7s ease-in-out infinite alternate;
+}
+
+.dragon-tail {
+  position: absolute;
+  left: 1px;
+  top: 61px;
+  width: 65px;
+  height: 28px;
+  transform: rotate(-10deg);
+  z-index: 3;
+}
+
+.dragon-tail span {
+  position: absolute;
+  display: block;
+  background:
+    linear-gradient(
+      145deg,
+      #d82934,
+      #7e1018
+    );
+  border: 3px solid #35070b;
+}
+
+.dragon-tail span:nth-child(1) {
+  width: 48px;
+  height: 19px;
+  left: 20px;
+  top: 0;
+  border-radius: 70% 20% 30% 60%;
+  transform: rotate(13deg);
+}
+
+.dragon-tail span:nth-child(2) {
+  width: 35px;
+  height: 15px;
+  left: 5px;
+  top: 9px;
+  border-radius: 80% 20% 40% 60%;
+  transform: rotate(-8deg);
+}
+
+.dragon-tail span:nth-child(3) {
+  width: 21px;
+  height: 13px;
+  left: -7px;
+  top: 13px;
+  border-radius: 80% 20% 40% 60%;
+  transform: rotate(-24deg);
+}
+
+.dragon-leg {
+  position: absolute;
+  width: 27px;
+  height: 38px;
+  z-index: 8;
+}
+
+.leg-front {
+  left: 91px;
+  top: 73px;
+  transform: rotate(15deg);
+}
+
+.leg-back {
+  left: 56px;
+  top: 75px;
+  transform: rotate(-10deg);
+}
+
+.dragon-leg::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 28px;
+  left: 5px;
+  top: 0;
+  border-radius: 60%;
+  background: #a9141d;
+  border: 3px solid #35070b;
+}
+
+.dragon-leg span {
+  position: absolute;
+  width: 9px;
+  height: 5px;
+  background: #f4c15c;
+  border: 2px solid #351c10;
+  border-radius: 50%;
+  top: 25px;
+  transform: rotate(25deg);
+}
+
+.dragon-leg span:first-child {
+  left: 1px;
+}
+
+.dragon-leg span:last-child {
+  left: 12px;
+  transform: rotate(-20deg);
+}
+
+@keyframes flap-back {
+  from {
+    transform: rotate(-25deg) scale(0.9);
+  }
+
+  to {
+    transform: rotate(13deg) scale(0.9);
+  }
+}
+
+@keyframes flap-front {
+  from {
+    transform: rotate(-14deg);
+  }
+
+  to {
+    transform: rotate(19deg);
+  }
+}
+
+@keyframes dragon-float {
+  from {
+    transform: translateY(-4px) rotate(-2deg);
+  }
+
+  to {
+    transform: translateY(5px) rotate(2deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .dragon {
+    transform: scale(0.85);
+  }
+
+  .dragon.flying {
+    animation: dragon-float-mobile 0.7s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes dragon-float-mobile {
+  from {
+    transform: scale(0.85) translateY(-4px) rotate(-2deg);
+  }
+
+  to {
+    transform: scale(0.85) translateY(5px) rotate(2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dragon.flying,
+  .dragon.flying .dragon-wing-back,
+  .dragon.flying .dragon-wing-front {
+    animation: none;
+  }
+}
