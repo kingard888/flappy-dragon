@@ -1,0 +1,357 @@
+.dragon-game {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #111;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.game-sky {
+  position: absolute;
+  inset: 0;
+  background: var(--game-sky);
+  transition: background 1s ease;
+}
+
+.game-header {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(520px, calc(100% - 30px));
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.score-box,
+.weather-box {
+  padding: 10px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  background: rgba(10, 15, 30, 0.45);
+  backdrop-filter: blur(8px);
+  color: white;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.score-box span,
+.weather-box small {
+  display: block;
+  font-size: 10px;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.score-box strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 27px;
+  line-height: 1;
+}
+
+.weather-box {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.weather-box > span {
+  font-size: 24px;
+}
+
+.weather-box strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+}
+
+.obstacles {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.rock-group {
+  position: absolute;
+  width: 76px;
+}
+
+.rock {
+  position: absolute;
+  left: 0;
+  width: 76px;
+  background:
+    linear-gradient(
+      90deg,
+      #2b2b35,
+      #666573 30%,
+      #3c3b48 70%,
+      #1d1c24
+    );
+  border: 4px solid #17161d;
+  box-shadow:
+    inset 7px 0 rgba(255, 255, 255, 0.08),
+    inset -8px 0 rgba(0, 0, 0, 0.3);
+}
+
+.rock::before,
+.rock::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.rock::before {
+  left: 16px;
+  top: 30px;
+}
+
+.rock::after {
+  right: 13px;
+  top: 65px;
+}
+
+.rock-top {
+  bottom: auto;
+  border-radius: 0 0 15px 15px;
+}
+
+.rock-bottom {
+  border-radius: 15px 15px 0 0;
+}
+
+.player {
+  position: absolute;
+  width: 170px;
+  height: 120px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.weather {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.weather span {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.35);
+  animation: weather-float 5s linear infinite;
+}
+
+.weather span:nth-child(1) { left: 5%; top: 15%; animation-delay: 0s; }
+.weather span:nth-child(2) { left: 12%; top: 55%; animation-delay: 1s; }
+.weather span:nth-child(3) { left: 20%; top: 25%; animation-delay: 2s; }
+.weather span:nth-child(4) { left: 29%; top: 70%; animation-delay: 3s; }
+.weather span:nth-child(5) { left: 38%; top: 18%; animation-delay: 1.5s; }
+.weather span:nth-child(6) { left: 47%; top: 45%; animation-delay: 2.5s; }
+.weather span:nth-child(7) { left: 56%; top: 75%; animation-delay: 0.5s; }
+.weather span:nth-child(8) { left: 65%; top: 20%; animation-delay: 4s; }
+.weather span:nth-child(9) { left: 74%; top: 52%; animation-delay: 2s; }
+.weather span:nth-child(10) { left: 83%; top: 30%; animation-delay: 1s; }
+.weather span:nth-child(11) { left: 91%; top: 65%; animation-delay: 3.5s; }
+.weather span:nth-child(12) { left: 17%; top: 85%; animation-delay: 2.8s; }
+.weather span:nth-child(13) { left: 34%; top: 88%; animation-delay: 1.2s; }
+.weather span:nth-child(14) { left: 52%; top: 12%; animation-delay: 3.2s; }
+.weather span:nth-child(15) { left: 69%; top: 83%; animation-delay: 0.8s; }
+.weather span:nth-child(16) { left: 87%; top: 12%; animation-delay: 4.2s; }
+.weather span:nth-child(17) { left: 8%; top: 40%; animation-delay: 2.2s; }
+.weather span:nth-child(18) { left: 43%; top: 60%; animation-delay: 3.7s; }
+.weather span:nth-child(19) { left: 62%; top: 35%; animation-delay: 1.7s; }
+.weather span:nth-child(20) { left: 78%; top: 75%; animation-delay: 2.7s; }
+.weather span:nth-child(21) { left: 94%; top: 45%; animation-delay: 0.3s; }
+.weather span:nth-child(22) { left: 25%; top: 10%; animation-delay: 4.5s; }
+
+.weather-3,
+.weather-4,
+.weather-5,
+.weather-6,
+.weather-7,
+.weather-8,
+.weather-9 {
+  opacity: 1;
+}
+
+.weather-3 span,
+.weather-4 span {
+  font-size: 15px;
+  animation-duration: 1.5s;
+}
+
+.weather-6 span {
+  font-size: 18px;
+  animation-duration: 6s;
+}
+
+.weather-7 span,
+.weather-8 span,
+.weather-9 span {
+  opacity: 0.7;
+  font-size: 20px;
+}
+
+.game-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: min(430px, calc(100% - 40px));
+  padding: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  border-radius: 24px;
+  background: rgba(10, 12, 27, 0.72);
+  backdrop-filter: blur(14px);
+  color: white;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.title span {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 5px;
+  opacity: 0.7;
+}
+
+.title strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 42px;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, #ffd56a, #ff8a57);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.game-overlay p {
+  margin: 15px 0 22px;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.game-overlay button {
+  border: 0;
+  padding: 13px 25px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ef3b43, #9f1620);
+  color: white;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(170, 20, 30, 0.35);
+}
+
+.game-overlay button:active {
+  transform: scale(0.96);
+}
+
+.game-over > span {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 3px;
+  opacity: 0.7;
+}
+
+.game-over > strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 65px;
+  line-height: 1;
+}
+
+.game-over > small {
+  opacity: 0.6;
+}
+
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55px;
+  z-index: 30;
+}
+
+.grass {
+  height: 12px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #3e7a36 0 14px,
+      #558d40 14px 25px
+    );
+  border-top: 3px solid #234c27;
+}
+
+.ground-dirt {
+  height: 43px;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #67452e 0 12px,
+      #795538 12px 24px
+    );
+  border-top: 3px solid #432c21;
+}
+
+@keyframes weather-float {
+  0% {
+    transform: translateY(-30px) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(180deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .game-header {
+    top: 12px;
+    width: calc(100% - 18px);
+  }
+
+  .score-box,
+  .weather-box {
+    padding: 8px 10px;
+  }
+
+  .score-box strong {
+    font-size: 22px;
+  }
+
+  .weather-box strong {
+    font-size: 10px;
+  }
+
+  .weather-box > span {
+    font-size: 19px;
+  }
+
+  .game-overlay {
+    padding: 24px 18px;
+  }
+
+  .title strong {
+    font-size: 34px;
+  }
+
+  .ground {
+    height: 48px;
+  }
+      }
